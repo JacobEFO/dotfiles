@@ -1,0 +1,3 @@
+alias kicad-cli='/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli'
+export STM32CubeMX_PATH=/Applications/STMicroelectronics/STM32CubeMX.app/Contents/Resources
+source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh

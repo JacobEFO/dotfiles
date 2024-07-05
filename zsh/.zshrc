@@ -114,9 +114,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Source this on Linux
-source ~/powerlevel10k/powerlevel10k.zsh-theme
-
 # Source this on MACos
 #source /usr/local/share/powerlevel10k/powerlevel10k.zsh-theme
 
@@ -133,32 +130,6 @@ alias ok='okular'
 alias xclip='xlip -selection c'
 alias hx='hx -c $HOME/.dotfiles/helix/config.toml'
 
-
-# We must add cargo's binaries to the path to be able to execute them!
-PATH=$PATH:~/.cargo/bin
-
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/jefo/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/jefo/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/jefo/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/jefo/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-
-
-# ONLY ON MACOS
-alias kicad-cli='/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli'
-export STM32CubeMX_PATH=/Applications/STMicroelectronics/STM32CubeMX.app/Contents/Resources
-source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
