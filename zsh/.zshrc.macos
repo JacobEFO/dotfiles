@@ -1,3 +1,18 @@
 alias kicad-cli='/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli'
 export STM32CubeMX_PATH=/Applications/STMicroelectronics/STM32CubeMX.app/Contents/Resources
 source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/jefo/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/jefo/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/jefo/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/jefo/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
