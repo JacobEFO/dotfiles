@@ -131,5 +131,15 @@ alias xclip='xlip -selection c'
 alias hx='hx -c $HOME/.dotfiles/helix/config.toml'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f $HOME/.dotfiles/powerlevel10k/.p10k.zsh ]] || source $HOME/.dotfiles/powerlevel10k/.p10k.zsh
+
+if [[ $(uname) == "Darwin" ]]; then
+	source $HOME/.dotfiles/zsh/.zshrc.macos
+elif [[ $(uname) == "Linux" ]]; then
+	source $HOME/.dotfiles/zsh/.zshrc.linux
+else
+	echo 'Unknown OS!'
+fi
+
 
