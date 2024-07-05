@@ -5,42 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-alias ll='exa -lhg --color=always'
-alias la='exa -lahg --color=always'
-alias up='cd ..'
-alias kicad-cli='/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli'
-alias hx='hx -c $HOME/.dotfiles/helix/config.toml'
-
-export EDITOR=hx
-export VISUAL=hx
-export BAT_THEME="Dracula"
-source /usr/local/share/powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/jefo/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/jefo/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/jefo/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/jefo/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-
-export STM32CubeMX_PATH=/Applications/STMicroelectronics/STM32CubeMX.app/Contents/Resources
-
-# Load the zsh-vi-mode plugin installed via homebrew
-source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-
-# oh-my-zshrc
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
@@ -51,7 +15,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="dracula"
+ZSH_THEME="robbyrussell"
+#ZSH_THEME="dracula"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -84,7 +49,7 @@ ZSH_THEME="dracula"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -113,7 +78,10 @@ ZSH_THEME="dracula"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+	git
+	git-prompt
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -145,3 +113,52 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Source this on Linux
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+# Source this on MACos
+#source /usr/local/share/powerlevel10k/powerlevel10k.zsh-theme
+
+export BAT_THEME="Dracula"
+export EDITOR=hx
+export VISUAL=hx
+
+alias ll='exa -lhg'
+alias la='exa -lahg'
+alias up='cd ..'
+alias less='bat'
+alias vi='vim'
+alias ok='okular'
+alias xclip='xlip -selection c'
+alias hx='hx -c $HOME/.dotfiles/helix/config.toml'
+
+
+# We must add cargo's binaries to the path to be able to execute them!
+PATH=$PATH:~/.cargo/bin
+
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/jefo/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/jefo/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/jefo/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/jefo/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+
+# ONLY ON MACOS
+alias kicad-cli='/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli'
+export STM32CubeMX_PATH=/Applications/STMicroelectronics/STM32CubeMX.app/Contents/Resources
+source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
