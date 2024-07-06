@@ -131,6 +131,10 @@ alias xclip='xlip -selection c'
 alias hx='hx -c $HOME/.dotfiles/helix/config.toml'
 alias tmux='tmux -f $HOME/.dotfiles/tmux/.tmux.conf'
 
+printcol () {
+	for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
+}
+
 
 if [[ $(uname) == "Darwin" ]]; then
 	source $HOME/.dotfiles/zsh/.zshrc.macos
