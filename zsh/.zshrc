@@ -115,6 +115,7 @@ plugins=(
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
 
 export BAT_THEME="Dracula"
 export EDITOR=hx
@@ -139,4 +140,3 @@ else
 	echo 'Unknown OS!'
 fi
 
-source $ZSH/oh-my-zsh.sh
