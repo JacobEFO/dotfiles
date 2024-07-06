@@ -15,7 +15,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="random"
 #ZSH_THEME="dracula"
 
 # Set list of themes to pick from when loading at random
@@ -81,9 +82,10 @@ ENABLE_CORRECTION="true"
 plugins=(
 	git
 	git-prompt
+	zsh-autosuggestions
+ 	zsh-syntax-highlighting
 )
 
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -114,9 +116,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Source this on MACos
-#source /usr/local/share/powerlevel10k/powerlevel10k.zsh-theme
-
 export BAT_THEME="Dracula"
 export EDITOR=hx
 export VISUAL=hx
@@ -129,6 +128,8 @@ alias vi='vim'
 alias ok='okular'
 alias xclip='xlip -selection c'
 alias hx='hx -c $HOME/.dotfiles/helix/config.toml'
+alias tmux='tmux -f $HOME/.dotfiles/tmux/.tmux.conf'
+
 
 if [[ $(uname) == "Darwin" ]]; then
 	source $HOME/.dotfiles/zsh/.zshrc.macos
@@ -138,4 +139,4 @@ else
 	echo 'Unknown OS!'
 fi
 
-
+source $ZSH/oh-my-zsh.sh
