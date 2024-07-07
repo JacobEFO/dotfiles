@@ -1,6 +1,6 @@
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
-[[ ! -f $HOME/.dotfiles/powerlevel10k/.p10k.zsh.linux ]] || source $HOME/.dotfiles/powerlevel10k/.p10k.zsh.linux
+[[ ! -f $HOME/.dotfiles/powerlevel10k/.p10k.linux.zsh ]] || source $HOME/.dotfiles/powerlevel10k/.p10k.linux.zsh
 
 # We must add cargo's binaries to the path to be able to execute them!
 PATH=$PATH:~/.cargo/bin

@@ -1,10 +1,8 @@
-alias kicad-cli='/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli'
-export STM32CubeMX_PATH=/Applications/STMicroelectronics/STM32CubeMX.app/Contents/Resources
-
+# We no longer need the following line because zsh-vi-mode is installed under the .oh-my-zsh/custom/plugins
 #source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source /usr/local/share/powerlevel10k/powerlevel10k.zsh-theme
 
-[[ ! -f $HOME/.dotfiles/powerlevel10k/.p10k.zsh.macos ]] || source $HOME/.dotfiles/powerlevel10k/.p10k.zsh.macos
+[[ ! -f $HOME/.dotfiles/powerlevel10k/.p10k.macos.zsh ]] || source $HOME/.dotfiles/powerlevel10k/.p10k.macos.zsh
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -20,3 +18,9 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# Set aliases
+alias kicad-cli='/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli'
+
+# Set environment variables
+export STM32CubeMX_PATH=/Applications/STMicroelectronics/STM32CubeMX.app/Contents/Resources
