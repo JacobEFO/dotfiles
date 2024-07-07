@@ -138,9 +138,9 @@ printcol () {
 
 
 if [[ $(uname) == "Darwin" ]]; then
-	source $HOME/.dotfiles/zsh/.zshrc.macos
+	source $HOME/.dotfiles/zsh/macos.zshrc
 elif [[ $(uname) == "Linux" ]]; then
-	source $HOME/.dotfiles/zsh/.zshrc.linux
+	source $HOME/.dotfiles/zsh/linux.zshrc
 else
 	echo 'Unknown OS!'
 fi
