@@ -119,7 +119,6 @@
   )
 
   # Defines character set used by powerlevel10k. It's best to let `p10k configure` set it for you.
-  #typeset -g POWERLEVEL9K_MODE=powerline
   typeset -g POWERLEVEL9K_MODE=nerdfont-complete
   # When set to `moderate`, some icons will have an extra space after them. This is meant to avoid
   # icon overlap when using non-monospace fonts. When set to `none`, spaces are not added.
@@ -198,7 +197,7 @@
   typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=255
   typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=67
   # Custom icon.
-  #typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION='⭐'
+  # typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION='⭐'
 
   ################################[ prompt_char: prompt symbol ]################################
   # Transparent background.
@@ -1335,7 +1334,8 @@
   #
   # You can define different colors, icons and content expansions for different classes:
   #
-  #   typeset -g POWERLEVEL9K_TERRAFORM_TEST_FOREGROUND=28
+  #   typeset -g POWERLEVEL9K_TERRAFORM_TEST_FOREGROUND=2
+  #   typeset -g POWERLEVEL9K_TERRAFORM_TEST_BACKGROUND=0
   #   typeset -g POWERLEVEL9K_TERRAFORM_TEST_VISUAL_IDENTIFIER_EXPANSION='⭐'
   #   typeset -g POWERLEVEL9K_TERRAFORM_TEST_CONTENT_EXPANSION='> ${P9K_CONTENT} <'
   typeset -g POWERLEVEL9K_TERRAFORM_CLASSES=(
