@@ -2,6 +2,9 @@ theme = "dracula"
 
 [editor]
 line-number = "relative"
+rulers = [80, 120]
+cursorline = true
+cursorcolumn = true
 mouse = false
 bufferline = "always"
 
@@ -14,10 +17,23 @@ select = "underline"
 hidden = false
 
 [editor.statusline]
-left = ["mode", "spinner"]
-center = ["file-name"]
-right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+left = [ "mode", "spinner", "diagnostics" ]
+center = [ "file-name", "separator", "version-control", "separator" ]
+right = [ "position", "position-percentage", "total-line-numbers" ]
 separator = "│"
 mode.normal = "NORMAL"
 mode.insert = "INSERT"
 mode.select = "SELECT"
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = true
+
+[editor.indent-guides]
+render = true
+character = "╎" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
+
+[keys.normal]
+#C-o = ":open /users/jefo/.dotfiles/helix/config.toml" # Maps Ctrl-o to opening of the helix config file
+C-r = ":config-reload"
