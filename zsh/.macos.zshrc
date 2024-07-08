@@ -19,8 +19,11 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# Set aliases
-alias kicad-cli='/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli'
-
 # Set environment variables
 export STM32CubeMX_PATH=/Applications/STMicroelectronics/STM32CubeMX.app/Contents/Resources
+export PATH=".:$PATH:/Applications/Sublime Text.app/Contents/MacOS"
+
+
+# Set aliases
+alias kicad-cli='/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli'
+alias subl='sublime_text'
