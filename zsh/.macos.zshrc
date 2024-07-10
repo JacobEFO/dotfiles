@@ -22,6 +22,7 @@ unset __conda_setup
 # Set environment variables
 export STM32CubeMX_PATH=/Applications/STMicroelectronics/STM32CubeMX.app/Contents/Resources
 export PATH=".:$PATH:/Applications/Sublime Text.app/Contents/MacOS"
+export PATH="/Users/jefo/oss-cad-suite/bin:$PATH"
 
 
 # Set aliases
