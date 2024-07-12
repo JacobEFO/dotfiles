@@ -1,5 +1,7 @@
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 [[ ! -f $HOME/.dotfiles/powerlevel10k/.p10k.linux.zsh ]] || source $HOME/.dotfiles/powerlevel10k/.p10k.linux.zsh
 
 # We must add cargo's binaries to the path to be able to execute them!
@@ -19,3 +21,11 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+export PATH="/home/jefo/oss-cad-suite/bin:$PATH"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# Aliases
+alias sshlog='journalctl -r /usr/sbin/sshd'
