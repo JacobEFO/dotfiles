@@ -1,0 +1,212 @@
+" A small vim guide:
+"   use: f(     To go to nearest '('
+"   use: vi'    TO mark everything inside single quotes
+"   use: vi"    To mark everything inside double quotes
+"   use: vib    To mark everything inside paranthesis
+"   use: viB    To mark everything inside curly braces
+"   use: ci"    To delete everything inside " and enter insert mode
+"
+
+" Don't try to be vi compatible
+set nocompatible              " required
+filetype off                  " required
+
+set nu
+
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'vim-scripts/indentpython.vim'
+Bundle 'Valloric/YouCompleteMe'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'nvie/vim-flake8'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'tpope/vim-fugitive'
+Plugin 'junegunn/vim-slash'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'rstacruz/vim-closer'
+Plugin 'wfxr/minimap.vim'
+Plugin 'junegunn/rainbow_parentheses.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'iamcco/markdown-preview.nvim'
+
+" Indentation
+let g:indent_guides_enable_on_vim_startup = 1
+
+" add all your plugins here (note older versions of Vundle
+" used Bundle instead of Plugin)
+
+" ...
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" Folding
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
+nnoremap <space> za
+vnoremap <space> zf
+
+" Just good commands to have
+:nmap ; :
+
+" ------------------------------------------
+" Python styling
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+
+let python_highlight_all=1
+syntax on
+" ------------------------------------------
+
+" ------------------------------------------
+" Verilog & Digital HDL styling
+autocmd BufNewFile,BufRead *.v,*.sv set syntax=verilog
+au BufRead,BufNewFile *.rdl set filetype=systemrdl
+au BufNewFile,BufRead *.v
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+" ------------------------------------------
+
+
+" ------------------------------------------
+" For some reason I have a cobol setting...
+autocmd FileType cobol setlocal indentexpr=
+" ------------------------------------------
+
+" Match bad whitespace in files.
+highlight BadWhitespace ctermbg=red guibg=darkred
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+" Remap leader key
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+
+set encoding=utf-8
+
+set t_Co=256
+let g:dracula_colorterm = 0
+let g:dracula_italic = 0
+" Dracula color scheme
+if v:version < 802
+    packadd! dracula
+endif
+syntax enable
+colorscheme dracula
+
+
+" Youcomplete me settings
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" Security
+"set modelines=0
+set nomodeline
+
+" Show line numbers
+set number relativenumber
+" set relativenumber
+
+" Show file stats
+set ruler
+
+" Blink cursor on error instead of beeping (grr)
+set visualbell
+
+" Whitespace
+set nowrap
+set textwidth=0
+set formatoptions=tcqrn1
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set noshiftround
+
+" Cursor motion
+set scrolloff=3
+set backspace=indent,eol,start
+set matchpairs+=<:> " use % to jump between pairs
+
+" Last line
+set showmode
+set showcmd
+
+" Searching
+nnoremap / /\v
+vnoremap / /\v
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set showmatch
+map <neader><space> :let @/=''<cr> " clear search
+
+" cursor highlight
+set cursorline
+set cursorcolumn
+" If you rather want to set it manually, comment out the previous two lines
+" and uncomment the one below.
+":nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
+
+
+
+
+
+
+
+
+
+noremap <plug>(slash-after) zz
+
+" Indent guides
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_guide_start_level = 2
+let g:indent_guides_guide_size = 1
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=238
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven 	ctermbg=8
+
+" Minimap control
+let g:minimap_width = 10
+let g:minimap_auto_start = 1
+let g:minimap_auto_start_win_enter = 1
+
+" Rainbow paranthesis
+" Activation based on file type
+augroup rainbow_lisp
+  autocmd!
+  autocmd FileType lisp,clojure,scheme,c,python RainbowParentheses
+augroup END
+let g:rainbow#max_level = 16
+let g:rainbow#pairs = [['(', ')'], ['[', ']']]
+" List of colors that you do not want. ANSI code or #RRGGBB
+let g:rainbow#blacklist = [233, 234]
+
+" Airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'jsformatter'
