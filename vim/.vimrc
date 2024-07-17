@@ -27,12 +27,14 @@ Plugin 'vim-scripts/indentpython.vim'
 Bundle 'Valloric/YouCompleteMe'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'tpope/vim-fugitive'
 Plugin 'junegunn/vim-slash'
-Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'rstacruz/vim-closer'
+Plugin 'jremmen/vim-ripgrep'
+Plugin 'scrooloose/nerdtree'
+"Plugin 'scrooloose/nerdtree-git-plugin'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'wfxr/minimap.vim'
 Plugin 'junegunn/rainbow_parentheses.vim'
 Plugin 'vim-airline/vim-airline'
@@ -62,6 +64,9 @@ vnoremap <space> zf
 " Just good commands to have
 :nmap ; :
 
+" Set guifont
+"set guifont=Fira\ Code:h14
+
 " ------------------------------------------
 " Python styling
 au BufNewFile,BufRead *.py
@@ -78,6 +83,18 @@ syntax on
 " ------------------------------------------
 
 " ------------------------------------------
+" C styling
+au BufNewFile,BufRead *.c,*.h
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+" ------------------------------------------
+
+" ------------------------------------------
 " Verilog & Digital HDL styling
 autocmd BufNewFile,BufRead *.v,*.sv set syntax=verilog
 au BufRead,BufNewFile *.rdl set filetype=systemrdl
@@ -90,10 +107,14 @@ au BufNewFile,BufRead *.v
     \ set autoindent |
 " ------------------------------------------
 
-
 " ------------------------------------------
 " For some reason I have a cobol setting...
 autocmd FileType cobol setlocal indentexpr=
+" ------------------------------------------
+
+" ------------------------------------------
+" Kicad related files
+au BufReadPost *.kicad_dbl set syntax=json
 " ------------------------------------------
 
 " Match bad whitespace in files.
@@ -120,6 +141,8 @@ colorscheme dracula
 " Youcomplete me settings
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 
 " Security
 "set modelines=0
@@ -144,6 +167,12 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set noshiftround
+
+" I have no idea what this does
+set ai
+set si
+set lbr
+set tw=500
 
 " Cursor motion
 set scrolloff=3
@@ -179,7 +208,7 @@ set cursorcolumn
 
 
 
-noremap <plug>(slash-after) zz
+"noremap <plug>(slash-after) zz
 
 " Indent guides
 let g:indent_guides_enable_on_vim_startup = 1
@@ -210,3 +239,10 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'jsformatter'
+
+
+" Setup NERDTree keybinds
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
