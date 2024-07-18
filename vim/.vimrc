@@ -11,6 +11,9 @@
 set nocompatible              " required
 filetype off                  " required
 
+" Stop buffers from doing weird shit to me!
+set hidden
+
 set nu
 
 
@@ -29,6 +32,8 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'tpope/vim-fugitive'
 Plugin 'junegunn/vim-slash'
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plugin 'junegunn/fzf.vim'
 Plugin 'rstacruz/vim-closer'
 Plugin 'jremmen/vim-ripgrep'
 Plugin 'scrooloose/nerdtree'
@@ -40,6 +45,7 @@ Plugin 'junegunn/rainbow_parentheses.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'iamcco/markdown-preview.nvim'
+Plugin 'tpope/vim-unimpaired'
 
 " Indentation
 let g:indent_guides_enable_on_vim_startup = 1
@@ -76,7 +82,9 @@ au BufNewFile,BufRead *.py
     \ set textwidth=79 |
     \ set expandtab |
     \ set autoindent |
-    \ set fileformat=unix
+    \ set fileformat=unix |
+    \ set colorcolumn=+1 |        " highlight column after 'textwidth'
+    \ highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 
 let python_highlight_all=1
 syntax on
@@ -91,7 +99,9 @@ au BufNewFile,BufRead *.c,*.h
     \ set textwidth=79 |
     \ set expandtab |
     \ set autoindent |
-    \ set fileformat=unix
+    \ set fileformat=unix |
+    \ set colorcolumn=+1 |        " highlight column after 'textwidth'
+    \ highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 " ------------------------------------------
 
 " ------------------------------------------
@@ -105,6 +115,8 @@ au BufNewFile,BufRead *.v
     \ set textwidth=79 |
     \ set expandtab |
     \ set autoindent |
+    \ set colorcolumn=+1 |        " highlight column after 'textwidth'
+    \ highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 " ------------------------------------------
 
 " ------------------------------------------
@@ -246,3 +258,6 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+
+" Setup Buffers
+nnoremap <silent> <C-b> :Buffers<CR>
