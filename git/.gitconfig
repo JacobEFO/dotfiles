@@ -1,8 +1,43 @@
 [init]
 	defaultBranch = master
 [alias]
-	st = status
-	ci = commit
-	co = checkout
-	br = branch
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    a = add --all
+    ai = add -i
+    #------------------
+    b = branch
+    ba = branch -a
+    bd = branch -d
+    bdd = branch -D
+    #------------------
+    c = commit
+    cm = commit -m
+    #------------------
+    o = checkout
+    ob = checkout -b
+    #------------------
+    ps = push
+    psu = push -u
+    pso = push origin
+    #------------------
+	s = status
+    #------------------
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[core]
+    editor = vim
+    pager = bat
+[color]
+    ui = auto
+[color "branch"]
+    current = yellow bold
+    local = green bold
+    remote = cyan bold
+[color "diff"]
+    meta = yellow
+    frag = magenta
+    old = red
+    new = green
+    whitespace = red reverse
+[color "status"]
+    added = green bold
+    changed = yellow bold
+    untracked = red bold
