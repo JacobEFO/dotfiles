@@ -40,7 +40,7 @@ Plugin 'scrooloose/nerdtree'
 "Plugin 'scrooloose/nerdtree-git-plugin'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'wfxr/minimap.vim'
+"Plugin 'wfxr/minimap.vim'
 Plugin 'junegunn/rainbow_parentheses.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -66,9 +66,6 @@ set nofoldenable
 set foldlevel=2
 nnoremap <space> za
 vnoremap <space> zf
-
-" Just good commands to have
-:nmap ; :
 
 " Set guifont
 "set guifont=Fira\ Code:h14
