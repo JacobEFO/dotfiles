@@ -120,6 +120,20 @@ au BufNewFile,BufRead *.v
 " ------------------------------------------
 
 " ------------------------------------------
+" Markdown 
+autocmd BufNewFile,BufRead *.md set syntax=markdown
+au BufNewFile,BufRead *.md
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set colorcolumn=+1 |        " highlight column after 'textwidth'
+    \ highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
+" ------------------------------------------
+
+" ------------------------------------------
 " For some reason I have a cobol setting...
 autocmd FileType cobol setlocal indentexpr=
 " ------------------------------------------
