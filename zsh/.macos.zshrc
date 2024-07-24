@@ -25,6 +25,8 @@ export PATH=".:$PATH:/Applications/Sublime Text.app/Contents/MacOS"
 export PATH="/Users/jefo/oss-cad-suite/bin:$PATH"
 export PATH="/Users/jefo/xschem-macos/bin:$PATH"
 export PATH="/usr/local/opt/bison/bin:$PATH"
+export EDITOR=mvim
+export VISUAL=mvim
 
 
 # Set aliases

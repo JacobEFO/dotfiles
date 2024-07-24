@@ -119,8 +119,9 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 export BAT_THEME="Dracula"
-export EDITOR=hx
-export VISUAL=hx
+export EDITOR=vim
+export VISUAL=vim
+export PAGER=bat
 
 alias ll='exa -lhg'
 alias la='exa -lahg'
@@ -132,6 +133,7 @@ alias xclip='xlip -selection c'
 alias hx='hx -c $HOME/.dotfiles/helix/config.toml'
 alias tmux='tmux -f $HOME/.dotfiles/tmux/.tmux.conf'
 
+# Function to print all colors in terminal.
 printcol () {
 	for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
 }
@@ -145,3 +147,11 @@ else
 	echo 'Unknown OS!'
 fi
 
+# Setup manpager
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+#man 2 select
+
+# Use bat as diff viewer
+batdiff() {
+    git diff --name-only --relative --diff-filter=d | xargs bat --diff
+}
