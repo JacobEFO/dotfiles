@@ -129,6 +129,7 @@ alias vi='vim'
 alias ok='okular'
 alias xclip='xlip -selection c'
 alias hx='hx -c $HOME/.dotfiles/helix/config.toml'
+alias ranger='ranger --confdir=$HOME/.dotfiles/ranger'
 
 # Set alias for TMUX if it exists.
 if type "tmux" > /dev/null; then
