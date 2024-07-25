@@ -125,7 +125,6 @@ export VISUAL=vim
 alias ll='exa -lhg'
 alias la='exa -lahg'
 alias up='cd ..'
-alias less='bat'
 alias vi='vim'
 alias ok='okular'
 alias xclip='xlip -selection c'
