@@ -50,3 +50,18 @@ Or run the following piece of code to have it do it for you:
 echo "[include]\n\tpath = $HOME/.dotfiles/git/.gitconfig" >> ~/.gitconfig
 ```
 
+## Btop
+Move the `.dotfiles/btop/themes/dracula.theme` to the shared location at
+`/usr/share/btop/themes` if not present there already.
+
+To also load this correct, the `$XDG_CONFIG_HOME` must be pointing to the
+location of your `.dotfiles/` location. By default this location is at
+`$HOME/.dotfiles/` and the `$XDG_CONFIG_HOME` can be set with:
+```
+export XDG_CONFIG_HOME=$HOME/.dotfies
+```
+
+If you're using the `.dotfiles/zsh/.zshrc` this is already set for you via the
+`.linux.zshrc` file.
+
+Note: if you're running on MacOS this is NOT the case.
