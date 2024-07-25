@@ -65,3 +65,18 @@ If you're using the `.dotfiles/zsh/.zshrc` this is already set for you via the
 `.linux.zshrc` file.
 
 Note: if you're running on MacOS this is NOT the case.
+
+## Ranger
+Make sure the `rifle.sh` is executable. You can achieve this by using `chmod`:
+```
+chmod u+x ~/.dotfiles/ranger/rifle.sh
+```
+
+Run ranger with the following alias to use the `.dotfiles/ranger` as your
+configuration directory.
+```
+alias ranger='ranger --confdir=$HOME/.dotfiles/ranger'
+```
+
+If you're using the `.dotfiles/zsh/.zshrc` this is automatically set for you
+once it detects `ranger`.
