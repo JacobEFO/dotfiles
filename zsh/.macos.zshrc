@@ -28,6 +28,8 @@ export PATH="/usr/local/opt/bison/bin:$PATH"
 export EDITOR=mvim
 export VISUAL=mvim
 
+alias skim="Skim"
+
 
 # Set aliases
 alias kicad-cli='/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli'
