@@ -158,3 +158,8 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 batdiff() {
     git diff --name-only --relative --diff-filter=d | xargs bat --diff
 }
+
+# Usy kitty +kitten to ssh
+kssh() {
+    kitty +kitten ssh $1 
+}
