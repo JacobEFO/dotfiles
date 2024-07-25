@@ -105,7 +105,6 @@ au BufNewFile,BufRead *.c,*.h
 
 " ------------------------------------------
 " Verilog & Digital HDL styling
-au BufRead,BufNewFile *.rdl set filetype=systemrdl
 au BufNewFile,BufRead *.rdl
     \ set filetype=systemrdl |
     \ highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
@@ -158,22 +157,27 @@ let mapleader=" "
 
 set encoding=utf-8
 
+" ------------------------------------------
+" Dracula color scheme settings
 set t_Co=256
 let g:dracula_colorterm = 0
-let g:dracula_italic = 0
+let g:dracula_italic = 0 " Set this, otherwise you get a weird BG color
 " Dracula color scheme
 if v:version < 802
     packadd! dracula
 endif
 syntax enable
 colorscheme dracula
+" ------------------------------------------
 
 
+" ------------------------------------------
 " Youcomplete me settings
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+" ------------------------------------------
 
 " Security
 "set modelines=0
@@ -222,7 +226,7 @@ set incsearch
 set ignorecase
 set smartcase
 set showmatch
-map <neader><space> :let @/=''<cr> " clear search
+"map <neader><space> :let @/=''<cr> " clear search
 
 " cursor highlight
 set cursorline
@@ -231,16 +235,7 @@ set cursorcolumn
 " and uncomment the one below.
 ":nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
-
-
-
-
-
-
-
-
-"noremap <plug>(slash-after) zz
-
+" ------------------------------------------
 " Indent guides
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
@@ -248,12 +243,16 @@ let g:indent_guides_guide_start_level = 2
 let g:indent_guides_guide_size = 1
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=238
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven 	ctermbg=8
+" ------------------------------------------
 
+" ------------------------------------------
 " Minimap control
 let g:minimap_width = 10
 let g:minimap_auto_start = 1
 let g:minimap_auto_start_win_enter = 1
+" ------------------------------------------
 
+" ------------------------------------------
 " Rainbow paranthesis
 " Activation based on file type
 augroup rainbow_lisp
@@ -264,7 +263,9 @@ let g:rainbow#max_level = 16
 let g:rainbow#pairs = [['(', ')'], ['[', ']']]
 " List of colors that you do not want. ANSI code or #RRGGBB
 let g:rainbow#blacklist = [233, 234]
+" ------------------------------------------
 
+" ------------------------------------------
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
@@ -279,6 +280,7 @@ let g:airline_powerline_fonts = 1
 "    let g:airline_left_sep = '▶'
 "    let g:airline_right_sep = '◀'
 "endif
+" ------------------------------------------
 
 " ------------------------------------------
 " Setup nerdcommenter
