@@ -121,7 +121,6 @@ source $ZSH/oh-my-zsh.sh
 export BAT_THEME="Dracula"
 export EDITOR=vim
 export VISUAL=vim
-export PAGER=bat
 
 alias ll='exa -lhg'
 alias la='exa -lahg'
