@@ -118,31 +118,67 @@ plugins=(
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 
-export BAT_THEME="Dracula"
 export EDITOR=vim
 export VISUAL=vim
 
-alias ll='exa -lhg'
-alias la='exa -lahg'
+
+# ------------------------------------------
+# Aliases
 alias up='cd ..'
 alias vi='vim'
 alias ok='okular'
 alias xclip='xlip -selection c'
 alias hx='hx -c $HOME/.dotfiles/helix/config.toml'
-alias ranger='ranger --confdir=$HOME/.dotfiles/ranger'
+
+# Remap ll and la to use exa if it exists.
+if type "exa" > /dev/null; then
+    alias ll='exa -lhg'
+    alias la='exa -lahg'
+fi
 
 # Set alias for TMUX if it exists.
 if type "tmux" > /dev/null; then
     alias tmux='tmux -f $HOME/.dotfiles/tmux/.tmux.conf'
 fi
 
+# Set alias for ranger if it exists.
+if type "ranger" > /dev/null; then
+    alias ranger='ranger --confdir=$HOME/.dotfiles/ranger'
+fi
+# ------------------------------------------
+
+
+# If the LS_COLORS was correctly cloned we shall update $LS_COLORS
+if [ -f $HOME/.dotfiles/LS_COLORS/lscolors.sh ]; then
+    source $HOME/.dotfiles/LS_COLORS/lscolors.sh
+fi
+
+# Let's setup bat if it is installed.
+if type "bat" > /dev/null; then
+    export BAT_THEME="Dracula"
+    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+    # Use bat as diff viewer
+    batdiff() {
+        git diff --name-only --relative --diff-filter=d | xargs bat --diff
+    }
+fi
+
+# ------------------------------------------
+# Nifty functions
+#
+# Usy kitty +kitten to ssh
+kssh() {
+    kitty +kitten ssh $1 
+}
 
 # Function to print all colors in terminal.
 printcol () {
 	for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
 }
+# ------------------------------------------
 
-
+# Based on OS we load either OS-specific .zshrc
 if [[ $(uname) == "Darwin" ]]; then
 	source $HOME/.dotfiles/zsh/.macos.zshrc
 elif [[ $(uname) == "Linux" ]]; then
@@ -150,17 +186,3 @@ elif [[ $(uname) == "Linux" ]]; then
 else
 	echo 'Unknown OS!'
 fi
-
-# Setup manpager
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-#man 2 select
-
-# Use bat as diff viewer
-batdiff() {
-    git diff --name-only --relative --diff-filter=d | xargs bat --diff
-}
-
-# Usy kitty +kitten to ssh
-kssh() {
-    kitty +kitten ssh $1 
-}

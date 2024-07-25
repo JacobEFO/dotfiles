@@ -1,0 +1,3 @@
+[submodule "LS_COLORS"]
+	path = LS_COLORS
+	url = git@github.com:JacobEFO/LS_COLORS.git
