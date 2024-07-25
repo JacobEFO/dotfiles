@@ -174,15 +174,15 @@ kssh() {
 
 # Function to print all colors in terminal.
 printcol () {
-	for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
+    for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
 }
 # ------------------------------------------
 
 # Based on OS we load either OS-specific .zshrc
 if [[ $(uname) == "Darwin" ]]; then
-	source $HOME/.dotfiles/zsh/.macos.zshrc
+    source $HOME/.dotfiles/zsh/.macos.zshrc
 elif [[ $(uname) == "Linux" ]]; then
-	source $HOME/.dotfiles/zsh/.linux.zshrc
+    source $HOME/.dotfiles/zsh/.linux.zshrc
 else
-	echo 'Unknown OS!'
+    echo 'Unknown OS!'
 fi

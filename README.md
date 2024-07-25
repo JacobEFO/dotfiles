@@ -5,6 +5,11 @@
 git clone git@github.com:JacobEFO/dotfiles.git ~/.dotfiles
 ```
 
+After cloning please pull the submodules attached with:
+```
+git submodule update --init --recursive
+```
+
 ## ZSH 
 To use the ZSH settings add the following to your `~/.zshrc`.
 ```
@@ -80,3 +85,4 @@ alias ranger='ranger --confdir=$HOME/.dotfiles/ranger'
 
 If you're using the `.dotfiles/zsh/.zshrc` this is automatically set for you
 once it detects `ranger`.
+
