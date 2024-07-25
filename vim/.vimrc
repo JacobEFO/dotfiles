@@ -46,6 +46,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'iamcco/markdown-preview.nvim'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'preservim/nerdcommenter'
+Plugin 'lervag/vimtex'
 
 " Indentation
 let g:indent_guides_enable_on_vim_startup = 1
@@ -103,9 +105,14 @@ au BufNewFile,BufRead *.c,*.h
 
 " ------------------------------------------
 " Verilog & Digital HDL styling
-autocmd BufNewFile,BufRead *.v,*.sv set syntax=verilog
 au BufRead,BufNewFile *.rdl set filetype=systemrdl
-au BufNewFile,BufRead *.v
+au BufNewFile,BufRead *.rdl
+    \ set filetype=systemrdl |
+    \ highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
+
+" autocmd BufNewFile,BufRead *.v,*.sv set syntax=verilog
+au BufNewFile,BufRead *.v,*.sv
+    \ set syntax=verilog |
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
@@ -118,8 +125,9 @@ au BufNewFile,BufRead *.v
 
 " ------------------------------------------
 " Markdown 
-autocmd BufNewFile,BufRead *.md set syntax=markdown
 au BufNewFile,BufRead *.md
+    \ set syntax=markdown |
+    \ setlocal spell |
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
@@ -271,6 +279,50 @@ let g:airline_powerline_fonts = 1
 "    let g:airline_left_sep = '▶'
 "    let g:airline_right_sep = '◀'
 "endif
+
+" ------------------------------------------
+" Setup nerdcommenter
+filetype plugin on
+"Create default mappings
+let g:NERDCreateDefaultMappings = 1
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
+" ------------------------------------------
+
+" ------------------------------------------
+" Setup vimtex 
+" Use '<leader>ll' to compile
+" Use '<leader>lk' to stop compilation (kill)
+" Use '<leader>lc' to clear auxilliary files.
+let g:vimtex_view_method='skim'
+let g:vimtex_compiler_method = 'latexmk'
+
+" Most VimTeX mappings rely on localleader and this can be changed with the
+" following line. The default is usually fine and is the symbol .
+let maplocalleader = " "
+" ------------------------------------------
 
 
 " Setup NERDTree keybinds
