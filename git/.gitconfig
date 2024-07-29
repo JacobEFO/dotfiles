@@ -1,7 +1,8 @@
 [init]
 	defaultBranch = master
 [alias]
-    a = add --all
+    a = add
+    aa = add --all
     ai = add -i
     #------------------
     b = branch
@@ -19,7 +20,13 @@
     psu = push -u
     pso = push origin
     #------------------
+    pl = pull
+    plo = pull origin
+    #------------------
 	s = status
+    #------------------
+    sw = switch
+    swc = switch -c
     #------------------
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [core]
