@@ -335,3 +335,5 @@ nnoremap <C-f> :NERDTreeFind<CR>
 
 " Setup Buffers
 nnoremap <silent> <C-b> :Buffers<CR>
+map <leader>n :bnext<cr>
+map <leader>p :bprevious<cr>
