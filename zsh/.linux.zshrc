@@ -29,6 +29,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # Aliases
 alias sshlog='journalctl -r /usr/sbin/sshd'
+alias xclip='/usr/bin/xclip -selection c'
 
 # Export
 export XDG_CONFIG_HOME=$HOME/.dotfiles
