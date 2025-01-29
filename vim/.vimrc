@@ -27,7 +27,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'vim-scripts/indentpython.vim'
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'tpope/vim-fugitive'
@@ -108,6 +108,7 @@ au BufNewFile,BufRead *.c,*.h
 au BufNewFile,BufRead *.rdl
     \ set filetype=systemrdl |
     \ highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
+" ------------------------------------------
 
 " autocmd BufNewFile,BufRead *.v,*.sv set syntax=verilog
 au BufNewFile,BufRead *.v,*.sv
@@ -124,6 +125,7 @@ au BufNewFile,BufRead *.v,*.sv
 
 " ------------------------------------------
 " Markdown 
+let g:markdown_folding = 1
 au BufNewFile,BufRead *.md
     \ set syntax=markdown |
     \ setlocal spell |
@@ -280,6 +282,12 @@ let g:airline_powerline_fonts = 1
 "    let g:airline_left_sep = '▶'
 "    let g:airline_right_sep = '◀'
 "endif
+" ------------------------------------------
+
+
+" ------------------------------------------
+" Set spellfile
+:set spellfile=$HOME/.dotfiles/vim/en.utf-8.add
 " ------------------------------------------
 
 " ------------------------------------------
