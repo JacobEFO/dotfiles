@@ -30,6 +30,7 @@ export NVM_DIR="$HOME/.nvm"
 # Aliases
 alias sshlog='journalctl -r /usr/sbin/sshd'
 alias xclip='/usr/bin/xclip -selection c'
+alias ltspice='wine ~/.wine/drive_c/Program\ Files/LTC/LTspiceXVII/XVIIx64.exe'
 
 # Export
 export XDG_CONFIG_HOME=$HOME/.dotfiles
