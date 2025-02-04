@@ -131,7 +131,18 @@ alias xclip='xlip -selection c'
 alias hx='hx -c $HOME/.dotfiles/helix/config.toml'
 
 # Remap ll and la to use exa if it exists.
-if type "exa" > /dev/null; then
+if type "eza" > /dev/null; then
+    export EZA_CONFIG_DIR="/$USER/.dotfiles/eza"
+    alias ll='eza -lhg'
+    alias la='eza -lahg'
+    if type brew &>/dev/null; then
+        FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+        autoload -Uz compinit
+        compinit
+    else
+        export FPATH="/home/jefo/eza/completions/zsh:$FPATH"
+    fi
+elif type "exa" > /dev/null; then
     alias ll='exa -lhg'
     alias la='exa -lahg'
 fi
