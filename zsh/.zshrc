@@ -171,12 +171,21 @@ fi
 # Let's setup bat if it is installed.
 if type "bat" > /dev/null; then
     export BAT_THEME="Dracula"
-    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+    #export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+    export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
 
     # Use bat as diff viewer
     batdiff() {
         git diff --name-only --relative --diff-filter=d | xargs bat --diff
     }
+    
+    alias bathelp='bat --plain --language=help'
+    help() {
+        "$@" --help 2>&1 | bathelp
+    }
+
+    alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
+    alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 fi
 
 # ------------------------------------------
