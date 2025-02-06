@@ -133,8 +133,12 @@ alias hx='hx -c $HOME/.dotfiles/helix/config.toml'
 # Remap ll and la to use exa if it exists.
 if type "eza" > /dev/null; then
     export EZA_CONFIG_DIR="/$USER/.dotfiles/eza"
-    alias ll='eza -lhg'
-    alias la='eza -lahg'
+    alias ll='eza -l --hyperlink --header --icons=always'
+    alias lf='eza -lf --hyperlink --header --icons=always'
+    alias ld='eza -lD --header --icons=always'
+    alias lg='eza -l --git --git-repos --hyperlink --header --icons=always'
+    alias la='eza -lahg --icons=always'
+    alias lag='eza -lahg --git --git-repos --icons=always'
     if type brew &>/dev/null; then
         FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
         autoload -Uz compinit
@@ -160,9 +164,9 @@ fi
 
 
 # If the LS_COLORS was correctly cloned we shall update $LS_COLORS
-if [ -f $HOME/.dotfiles/LS_COLORS/lscolors.sh ]; then
-    source $HOME/.dotfiles/LS_COLORS/lscolors.sh
-fi
+#if [ -f $HOME/.dotfiles/LS_COLORS/lscolors.sh ]; then
+#    source $HOME/.dotfiles/LS_COLORS/lscolors.sh
+#fi
 
 # Let's setup bat if it is installed.
 if type "bat" > /dev/null; then
