@@ -133,11 +133,11 @@ alias hx='hx -c $HOME/.dotfiles/helix/config.toml'
 # Remap ll and la to use exa if it exists.
 if type "eza" > /dev/null; then
     export EZA_CONFIG_DIR="/$USER/.dotfiles/eza"
-    alias ll='eza -l --hyperlink --header --icons=always'
-    alias lf='eza -lf --hyperlink --header --icons=always'
-    alias ld='eza -lD --header --icons=always'
-    alias lg='eza -l --git --git-repos --hyperlink --header --icons=always'
-    alias la='eza -lahg --icons=always'
+    alias ll='eza -lg --hyperlink --header --icons=always'
+    alias lf='eza -lgf --hyperlink --header --icons=always'
+    alias ld='eza -lgD --show-symlinks --header --icons=always'
+    alias lg='eza -lg --git --git-repos --hyperlink --header --icons=always'
+    alias la='eza -lag --hyperlink --header --icons=always'
     alias lag='eza -lahg --git --git-repos --icons=always'
     if type brew &>/dev/null; then
         FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
