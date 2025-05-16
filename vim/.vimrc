@@ -48,6 +48,8 @@ Plugin 'iamcco/markdown-preview.nvim'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'preservim/nerdcommenter'
 Plugin 'lervag/vimtex'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 " Indentation
 let g:indent_guides_enable_on_vim_startup = 1
@@ -135,6 +137,20 @@ au BufNewFile,BufRead *.md
     \ set textwidth=79 |
     \ set expandtab |
     \ set autoindent |
+    \ set colorcolumn=+1 |        " highlight column after 'textwidth'
+    \ highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
+" ------------------------------------------
+"
+" ------------------------------------------
+" Latex styling
+au BufNewFile,BufRead *tex
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
     \ set colorcolumn=+1 |        " highlight column after 'textwidth'
     \ highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 " ------------------------------------------
@@ -290,6 +306,7 @@ let g:airline_powerline_fonts = 1
 :set spellfile=$HOME/.dotfiles/vim/en.utf-8.add
 " ------------------------------------------
 
+
 " ------------------------------------------
 " Setup nerdcommenter
 filetype plugin on
@@ -321,27 +338,53 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 " ------------------------------------------
 
+
 " ------------------------------------------
 " Setup vimtex 
 " Use '<leader>ll' to compile
 " Use '<leader>lk' to stop compilation (kill)
 " Use '<leader>lc' to clear auxilliary files.
-let g:vimtex_view_method='skim'
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
 let g:vimtex_compiler_method = 'latexmk'
+" ------------------------------------------
+
 
 " Most VimTeX mappings rely on localleader and this can be changed with the
 " following line. The default is usually fine and is the symbol .
 let maplocalleader = " "
+
+
 " ------------------------------------------
+" Setup ultisnips
+" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
+" - https://github.com/Valloric/YouCompleteMe
+" - https://github.com/nvim-lua/completion-nvim
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+" ------------------------------------------
+"
 
 
+" ------------------------------------------
 " Setup NERDTree keybinds
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+" ------------------------------------------
 
+
+" ------------------------------------------
 " Setup Buffers
 nnoremap <silent> <C-b> :Buffers<CR>
 map <leader>n :bnext<cr>
 map <leader>p :bprevious<cr>
+" ------------------------------------------
