@@ -144,6 +144,7 @@ au BufNewFile,BufRead *.md
 " ------------------------------------------
 " Latex styling
 au BufNewFile,BufRead *tex
+    \ setlocal spell |
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
@@ -302,8 +303,9 @@ let g:airline_powerline_fonts = 1
 
 
 " ------------------------------------------
-" Set spellfile
+" Setup spelling
 :set spellfile=$HOME/.dotfiles/vim/en.utf-8.add
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 " ------------------------------------------
 
 
