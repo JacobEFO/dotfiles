@@ -34,3 +34,7 @@ alias ltspice='wine ~/.wine/drive_c/Program\ Files/LTC/LTspiceXVII/XVIIx64.exe'
 
 # Export
 export XDG_CONFIG_HOME=$HOME/.dotfiles
+
+if [ -f $HOME/.cargo/env ]; then
+    source $HOME/.cargo/env
+fi
