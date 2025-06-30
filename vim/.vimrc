@@ -33,6 +33,7 @@ Plugin 'nvie/vim-flake8'
 Plugin 'tpope/vim-fugitive'
 Plugin 'junegunn/vim-slash'
 Plugin 'rust-lang/rust.vim'
+Plugin 'dense-analysis/ale'
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'junegunn/fzf.vim'
 Plugin 'rstacruz/vim-closer'
