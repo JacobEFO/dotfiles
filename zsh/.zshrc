@@ -160,6 +160,18 @@ fi
 if type "ranger" > /dev/null; then
     alias ranger='ranger --confdir=$HOME/.dotfiles/ranger'
 fi
+
+if type "minicom" > /dev/null; then
+    alias minicom='sudo minicom -s -c on'
+fi
+
+if [ -f /opt/st/stm32cubeide_1.19.0/stm32cubeide ]; then
+    alias cubeide='/opt/st/stm32cubeide_1.19.0/stm32cubeide &'
+fi
+
+if [ -f /usr/local/STMicroelectronics/STM32Cube/STM32CubeMX/STM32CubeMX ]; then
+    alias cubemx='/usr/local/STMicroelectronics/STM32Cube/STM32CubeMX/STM32CubeMX &'
+fi
 # ------------------------------------------
 
 
