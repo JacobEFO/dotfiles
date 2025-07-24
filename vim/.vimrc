@@ -27,7 +27,8 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'vim-scripts/indentpython.vim'
-"Bundle 'Valloric/YouCompleteMe'
+Bundle 'Valloric/YouCompleteMe'
+Plugin 'rdnetto/YCM-Generator'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'tpope/vim-fugitive'
@@ -195,6 +196,8 @@ colorscheme dracula
 " ------------------------------------------
 " Youcomplete me settings
 let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_python_intepreter_path = '/usr/bin/pyhton3'
+let g:ycm_clangd_binary_path = '/usr/bin/clangd'
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
