@@ -80,14 +80,14 @@ vnoremap <space> zf
 " ------------------------------------------
 " Python styling
 au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=79 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix |
-    \ set colorcolumn=+1 |        " highlight column after 'textwidth'
+    \ setlocal tabstop=4 |
+    \ setlocal softtabstop=4 |
+    \ setlocal shiftwidth=4 |
+    \ setlocal textwidth=88 |
+    \ setlocal expandtab |
+    \ setlocal autoindent |
+    \ setlocal fileformat=unix |
+    \ setlocal colorcolumn=+1 |        " highlight column after 'textwidth'
     \ highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 
 let python_highlight_all=1
@@ -221,10 +221,10 @@ set visualbell
 set nowrap
 set textwidth=0
 set formatoptions=tcqrn1
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
+" set tabstop=4
+" set shiftwidth=4
+" set softtabstop=4
+" set expandtab
 set noshiftround
 
 " I have no idea what this does
@@ -367,11 +367,24 @@ let g:NERDToggleCheckAllLines = 1
 " Use '<leader>lk' to stop compilation (kill)
 " Use '<leader>lc' to clear auxilliary files.
 let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
-let g:vimtex_compiler_method = 'latexmk'
+
+" Setup compiler method
+" Compiler method uses a 'make' command with custom setup
+" this means it will only work properly, if the directory contains a Makefile file
+let g:vimtex_compiler_method = 'generic'
+let g:vimtex_compiler_generic = {
+      \ 'command' : 'make',
+      \}
+let g:vimtex_compiler_output_dir = 'build'
+
+" Setup my vimtex viewer
+let g:vimtex_view_method='zathura'
+let g:vimtex_view_general_viewer = 'zathura'
+let g:vimtex_view_general_options = '--synctex-forward @line:@col:@tex @pdf'
+
 " ------------------------------------------
 
 
@@ -406,7 +419,13 @@ nnoremap <C-f> :NERDTreeFind<CR>
 
 " ------------------------------------------
 " Setup Buffers
+
+" Ctrl + b opens up list of buffers
 nnoremap <silent> <C-b> :Buffers<CR>
+
+" Space + n goes to next buffer
 map <leader>n :bnext<cr>
+
+" Space + p goes to buffer
 map <leader>p :bprevious<cr>
 " ------------------------------------------
