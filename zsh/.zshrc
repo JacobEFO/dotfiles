@@ -165,13 +165,27 @@ if type "minicom" > /dev/null; then
     alias minicom='sudo minicom -s -c on'
 fi
 
-if [ -f /opt/st/stm32cubeide_1.19.0/stm32cubeide ]; then
-    alias cubeide='/opt/st/stm32cubeide_1.19.0/stm32cubeide &'
-fi
+# ------------------------------------------
+# Setup alias for stm32cubeide based on the newest
+# Search for the executable using a wildcard
+# (N) makes the glob "null" if no match is found, preventing errors
+# [1] takes the first match found
+local cube_path=(/opt/st/stm32cubeide_*/stm32cubeide(N))
 
-if [ -f /usr/local/STMicroelectronics/STM32Cube/STM32CubeMX/STM32CubeMX ]; then
-    alias cubemx='/usr/local/STMicroelectronics/STM32Cube/STM32CubeMX/STM32CubeMX &'
+if [[ -n $cube_path[1] ]]; then
+    alias cubeide="$cube_path[1] &"
 fi
+# ------------------------------------------
+
+# ------------------------------------------
+# Setup alias for stm32cubemx
+# Define potential paths in order of preference
+for mx_bin in "$HOME/STM32CubeMX/STM32CubeMX" "/usr/local/STMicroelectronics/STM32Cube/STM32CubeMX/STM32CubeMX"; do
+    if [[ -x "$mx_bin" ]]; then
+        alias cubemx="$mx_bin &"
+        break # Stop at the first one found
+    fi
+done
 # ------------------------------------------
 
 
